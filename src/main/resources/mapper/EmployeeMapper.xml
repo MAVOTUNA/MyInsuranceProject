@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdm.Employee.mapper.EmployeeMapper" >
+
+    <select id="employeelogin" resultType="int">
+        SELECT COUNT(*) FROM EMPLOYEE WHERE ID = #{id} AND PW = #{pw}
+    </select>
+
+    <select id="employeeInfo" resultType="com.sdm.domain.EmployeeVO">
+        SELECT * FROM EMPLOYEE WHERE ID = #{id}
+    </select>
+
+    <insert id="employeeJoin">
+        INSERT INTO SCOTT.EMPLOYEE
+            (ID, DEPARTMENT, EMAIL, PW, NAME, PHONE, YEARTOWORK, PAY)
+        VALUES(#{id}, #{department}, #{email}, #{pw}, #{name}, #{phone},#{yeartowork}, #{pay})
+    </insert>
+
+    <select id="ContractList" resultType="com.sdm.domain.ContractVO">
+        SELECT * FROM Contract
+    </select>
+
+    <select id="CarCheck" resultType="int">
+        SELECT COUNT(*) FROM CARINSURANCE WHERE InsuranceID = #{insuranceID}
+    </select>
+
+
+    <select id="CancerCheck" resultType="int">
+        SELECT COUNT(*) FROM CANCERINSURANCE WHERE InsuranceID = #{insuranceID}
+    </select>
+
+    <select id="CarInsuranceList" resultType="com.sdm.domain.CarInsuranceVO">
+        SELECT * FROM CARINSURANCE WHERE InsuranceID= #{insuranceID}
+    </select>
+
+    <select id="CancerInsuranceList" resultType="com.sdm.domain.CancerInsuranceVO">
+        SELECT * FROM CANCERINSURANCE WHERE InsuranceID= #{insuranceID}
+    </select>
+
+    <select id="getClientInfo" resultType="com.sdm.domain.ClientVO">
+        SELECT * FROM CLIENT WHERE ID = #{clientId}
+    </select>
+
+    <update id="updateContract">
+        UPDATE Contract SET InsurancePee =#{finalpee} , ApproveCheck='승인'  WHERE ClientID= #{clientid} AND InsuranceID= #{insuranceid}
+    </update>
+
+    <update id="addCompensation">
+        UPDATE Accident SET Compensation=#{compensation} WHERE ClientID=#{clientId}
+    </update>
+
+    <select id="getClientInfoList" resultType="com.sdm.domain.ClientVO">
+        SELECT * FROM CLIENT WHERE ID = #{clientId}
+    </select>
+
+    <delete id="deleteClientContract">
+        DELETE FROM CONTRACT WHERE InsuranceID =#{insuranceId} AND ClientID = #{clientId}
+    </delete>
+
+    <select id="accidentList" resultType="com.sdm.domain.AccidentVO">
+        SELECT * FROM Accident WHERE CLIENTID =#{clientId}
+    </select>
+
+    <select id="getInsuranceInfo" resultType="com.sdm.domain.InsuranceVO">
+        SELECT * FROM INSURANCE WHERE InsuranceID =#{insuranceId}
+    </select>
+
+    <select id="employeefindpassword">
+        SELECT COUNT(*) FROM EMPLOYEE WHERE ID = #{employeeId} AND EMAIL = #{email}
+    </select>
+
+
+
+
+
+</mapper>

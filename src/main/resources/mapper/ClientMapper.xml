@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdm.Client.mapper.ClientMapper">
+
+    <insert id="clientJoin">
+        INSERT INTO CLIENT
+        (ID, APPROVECHECK, PW, NAME, EMAIL, PHONE, GENDER, AGE, SALARY, EXPERT, CARPRICE, DRIVEYEAR, ENGINEDISPLACEMENT, CANCERHISTORY, ADMISSIONHISTORY, FAMILYCANCERCHECK)
+        VALUES(#{id}, 'X', #{pw}, #{name}, #{email}, #{phone}, #{gender}, #{age}, #{salary}, #{expert}, #{carprice}, #{driveyear}, #{enginedisplacement}, #{cancerhistory}, #{admissionhistory}, #{familycancercheck})
+    </insert>
+
+    <select id="clientlogin" resultType="int">
+        SELECT COUNT(*) FROM Client WHERE ID = #{id} AND PW = #{pw}
+    </select>
+
+
+    <select id="clientInfo" resultType="com.sdm.domain.ClientVO">
+        SELECT * FROM Client WHERE ID = #{id}
+    </select>
+
+    <select id="clientfindpassword" resultType="int">
+        SELECT COUNT(*) FROM Client WHERE ID = #{id} AND EMAIL = #{email}
+    </select>
+
+    <delete id="clientDelete">
+        DELETE FROM Client WHERE ID = #{id}
+    </delete>
+
+    <insert id="applyAccident">
+        INSERT INTO SCOTT.ACCIDENT
+            (CLIENTID, CONTENT, DAMAGEMONEY, COMPENSATION)
+        VALUES(#{ClientID}, #{Content}, #{DamageMoney}, 0)
+
+    </insert>
+
+    <select id="accidentlist" resultType="com.sdm.domain.AccidentVO">
+
+        SELECT * FROM ACCIDENT WHERE CLIENTID = #{id}
+
+    </select>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

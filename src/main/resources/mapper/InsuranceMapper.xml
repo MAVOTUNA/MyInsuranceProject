@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sdm.Insurance.mapper.InsuranceMapper" >
+
+    <insert id="AddCarInsurance">
+
+        INSERT INTO SCOTT.CARINSURANCE
+        (InsuranceID, AGECASE1, AGECASE2, CARPRICECASE1, CARPRICECASE2, CARPRICECASE3, DRIVEYEARCASE1, DRIVEYEARCASE2, DRIVEYEARCASE3, ENGINEDISPLACEMENT1, ENGINEDISPLACEMENT2, ENGINEDISPLACEMENT3, ENGINEDISPLACEMENT4, ENGINEDISPLACEMENT5, ENGINEDISPLACEMENT6)
+        VALUES(#{InsuranceID}, #{AgeCase1}, #{AgeCase2}, #{CarPriceCase1}, #{CarPriceCase2}, #{CarPriceCase3}, #{DriveYearCase1}, #{DriveYearCase2}, #{DriveYearCase3} ,#{EngineDisplacement1} ,#{EngineDisplacement2}, #{EngineDisplacement3}, #{EngineDisplacement4}, #{EngineDisplacement5}, #{EngineDisplacement6} )
+    </insert>
+
+    <insert id="AddCancerInsurance">
+        INSERT INTO SCOTT.CANCERINSURANCE
+        (InsuranceID, AGECASE1, AGECASE2, MYCANCERCASE1, MYCANCERCASE2, MYCANCERCASE3, MYCANCERCASE4, ADMISSIONHISTORY1, ADMISSIONHISTORY2, ADMISSIONHISTORY3, ADMISSIONHISTORY4, FAMILLYCANCERCASE1, FAMILLYCANCERCASE2, FAMILLYCANCERCASE3, FAMILLYCANCERCASE4, FAMILLYCANCERCASE5, FAMILLYCANCERCASE6)
+        VALUES(#{InsuranceID}, #{AgeCase1}, #{AgeCase2}, #{MyCancerCase1}, #{MyCancerCase2},  #{MyCancerCase3},  #{MyCancerCase4}, #{AdmissionHistory1}, #{AdmissionHistory2}, #{AdmissionHistory3} , #{AdmissionHistory4}, #{FamillyCancerCase1}, #{FamillyCancerCase2}, #{FamillyCancerCase3}, #{FamillyCancerCase4}, #{FamillyCancerCase5}, #{FamillyCancerCase6})
+    </insert>
+
+    <insert id="AddInsurance1">
+
+        INSERT INTO SCOTT.INSURANCE
+            (INSURANCEID, INSURANCEPEE, INSURANCENAME, INSURANCEEXPLANATION)
+        VALUES(#{InsuranceID}, #{InsurancePee}, #{InsuranceName} , #{InsuranceExplanation})
+
+    </insert>
+a
+    <insert id="AddInsurance2">
+
+        INSERT INTO SCOTT.INSURANCE
+            (INSURANCEID, INSURANCEPEE, INSURANCENAME, INSURANCEEXPLANATION)
+        VALUES(#{InsuranceID}, #{InsurancePee}, #{InsuranceName} , #{InsuranceExplanation})
+
+    </insert>
+
+    <select id="InsuranceList" resultType="com.sdm.domain.InsuranceVO">
+        SELECT * FROM INSURANCE
+    </select>
+
+    <select id="CarCheck" resultType="int">
+        SELECT COUNT(*) FROM CARINSURANCE WHERE InsuranceID = #{insuranceID}
+    </select>
+
+
+    <select id="CancerCheck" resultType="int">
+        SELECT COUNT(*) FROM CANCERINSURANCE WHERE InsuranceID = #{insuranceID}
+    </select>
+
+    <select id="CarInsuranceList" resultType="com.sdm.domain.CarInsuranceVO">
+        SELECT * FROM CARINSURANCE WHERE InsuranceID= #{insuranceID}
+    </select>
+
+    <select id="CancerInsuranceList" resultType="com.sdm.domain.CancerInsuranceVO">
+        SELECT * FROM CANCERINSURANCE WHERE InsuranceID= #{insuranceID}
+    </select>
+
+
+
+    <delete id="deleteInsurance1">
+        DELETE FROM INSURANCE WHERE InsuranceID = #{insuranceID}
+    </delete>
+
+    <delete id="deleteInsurance2">
+        DELETE FROM INSURANCE WHERE InsuranceID = #{insuranceID}
+    </delete>
+
+    <delete id="deleteCarInsurance">
+        DELETE FROM CARINSURANCE WHERE InsuranceID = #{insuranceID}
+    </delete>
+
+    <delete id="deleteCancerInsurance">
+        DELETE FROM CANCERINSURANCE WHERE InsuranceID = #{insuranceID}
+    </delete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
